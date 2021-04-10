@@ -1,0 +1,34 @@
+name: MultiPlayerHardcore
+version: 1.0
+main: com.adrianwowk.multiplayerhardcore.MultiPlayerHardcore
+author: Adrian Wowk
+commands:
+  revive:
+    usage: /<command> <target>
+  hardcore:
+    usage: /<command> <start|end>
+api-version: 1.14
+permissions:
+  mph.revive:
+    description: Allows use of /revive command
+    default: op
+  mph.hardcore.start:
+    description: Allows use of /hardcore start command
+    default: op
+  mph.hardcore.end:
+    description: Allows use of /hardcore end command
+    default: op
+  mph.hardcore:
+      description: Allows use of /hardcore command
+      default: op
+      children:
+        mph.hardcore.start: true
+        mph.hardcore.end: true
+  mph.*:
+    description: Wildcard permission
+    default: op
+    children:
+      mph.revive: true
+      mph.hardcore.start: true
+      mph.hardcore.end: true
+softdepend: [BackOnDeath]
